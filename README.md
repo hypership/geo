@@ -52,7 +52,7 @@ This notation follows the ISO 31-11:1992 standard.
 
 ### Octocube
 
-aps 3D coordinates in a cube, divided in 8 sections.
+Maps 3D coordinates into a cube, divided in 8 sections.
 
 Each section is called sector, numbered from 1 to 8:
 
@@ -66,6 +66,42 @@ Each section is called sector, numbered from 1 to 8:
     |     |     | |/
     |  3  |  4  | /
     |_____|_____|/
+
+The point (0, 0, 0) is at the cube center.
+
+**Use the octocube to represent octants*
+
+As a 2D plane can be divided into quadrants, a 3D space can be divided
+in octants. See https://en.wikipedia.org/wiki/Octant_(solid_geometry).
+
+To get the list of sign of an octant, instead of its number,
+you can use the method `getBaseVector`.
+
+**Gets a point furthermore far away from the centre**
+
+If you've a point P and wants to get another point, with the warranties
+it will go furthermore from the center and never reach another octant
+(ie the point will belong to the same octant), you can use:
+
+```
+$point = new Point3D(-7, 4, -5);
+$sector = Octocube::getSectorFromPoint3D($point);
+echo "Point belongs to sector C", $sector;
+
+$vector = Octocube::getBaseVector($sector);
+$point->translate(...$vector);
+echo $point;
+```
+
+This code will output:
+
+```
+Point belongs to sector C1
+xyz: [-8.00, 5.00, -6.00]
+```
+
+This technique has been tested with  map builders, where you need to increase
+the content built indefinitely.
 
 ## Helper classes
 

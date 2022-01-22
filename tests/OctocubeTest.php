@@ -32,7 +32,7 @@ class OctocubeTest extends TestCase {
     }
 
     public function testGetBaseVector () {
-        self::assertEquals([1, 1 , 1], Octocube::getBaseVector(6));
+        self::assertEquals([1.0, 1.0 , 1.0], Octocube::getBaseVector(6));
     }
 
     public function testGetBaseVectorForNonExistingSector () {
