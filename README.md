@@ -100,7 +100,7 @@ Point belongs to sector C1
 xyz: [-8.00, 5.00, -6.00]
 ```
 
-This technique has been tested with  map builders, where you need to increase
+This technique has been tested with map builders, where you need to increase
 the content built indefinitely.
 
 ## Helper classes
